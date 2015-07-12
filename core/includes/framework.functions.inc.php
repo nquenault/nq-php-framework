@@ -59,11 +59,12 @@ function redirect($url, $forceAnchor = false)
 
 	if($forceAnchor === null)
 		$forceAnchor = $config['anchors_ajax_navigation'];
+		
+	$uri = (strpos($url, '://') === false ? site_url($url, true, false) : ($forceAnchor ? '#' : '').$url);
 
-	header('Location: '.(strpos($url, '://') === false ?
-		site_url($url, true, false) : ($forceAnchor ? '#' : '').$url)
-	);
-	die();
+	header('HTTP/1.1 301 Moved Permanently');
+	header('Location: '.$uri);
+	die('<html><head><title>301 Moved Permanently</title></head><body><a href="'.$uri.'">moved here</a></body></html>');
 }
 
 function loadmodel($model, $func = 'index')
