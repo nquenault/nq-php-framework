@@ -229,7 +229,8 @@ function getMimeType($path)
 {
 	$type = false;
 
-	$tpath = strpos($path, '.') !== false ? substr($path, strpos($path, '.') + 1) : $path;
+	if(preg_match('/\.([^\.]+)$/', $path, $matches))
+		$path = $matches[1];
 
 	switch(strtolower($tpath))
 	{
