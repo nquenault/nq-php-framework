@@ -143,7 +143,7 @@ $config['anchors_ajax_navigation'] = false;
 | Permet de définir le filtrage XSS sur les variables globales
 |
 */
-$config['xss_filtering']['REQUEST'] = true;
+$config['xss_filtering']['REQUEST'] = false;
 $config['xss_filtering']['GET'] = true;
 $config['xss_filtering']['POST'] = true;
 $config['xss_filtering']['COOKIE'] = true;
